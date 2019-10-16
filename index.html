@@ -19,11 +19,39 @@
         const { Loader } = GameEngine
         
         const loader = new Loader
+
         loader.addImage('bunny', 'static/rabbit.jpg')
+        loader.addImage('dog', 'static/corgy.jpg')
+        loader.addImage('desk', 'static/laptop.jpg')
+
         loader.addJson('persons', 'static/persons.json' )
+        loader.addJson('colors', 'static/colors.json' )
+        loader.addJson('youtube', 'static/youtube.json' )
 
         loader.load( () => {
-            console.log('Images loaded');
+
+            const images = loader.resources.images
+            document.body.append(images['bunny'])
+            document.body.append(images['dog'])
+            document.body.append(images['desk'])
+
+            const jsons = loader.resources.jsons
+            console.table(jsons['persons']);
+            console.table(jsons['colors']);
+            console.table(jsons['youtube']);
+
+
+            // loader.resources.images.forEach( (index, value) => {
+            //     console.log(index);
+            //     console.log(value);
+            // });
+            
+            // for ( const someValue of loader.resources.images ) {
+                // console.log(someValue);
+                // document.body.append(image);
+            // }
+
+
         })
 
 
